@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>頌缽療癒體驗｜七脈輪清理 × 頌缽美顏拉提</title>
+  <meta name="description" content="七脈輪頌缽清理 NT$888，頌缽美顏拉提 NT$399。透過古老頌缽振動，喚醒身體自癒力，找回內在平靜與光彩。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #c8a96e;
+      --gold-light: #e8d5a8;
+      --gold-pale: #f8f2e4;
+      --ink: #1e1a14;
+      --muted: #6b5f4e;
+      --bg: #faf7f1;
+      --white: #fffef9;
+      --chakra-1: #c0392b;
+      --chakra-2: #e67e22;
+      --chakra-3: #f1c40f;
+      --chakra-4: #27ae60;
+      --chakra-5: #2980b9;
+      --chakra-6: #8e44ad;
+      --chakra-7: #9b59b6;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.85;
+      overflow-x: hidden;
+    }
+
+    /* ── Noise texture overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(250, 247, 241, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200, 169, 110, 0.2);
+    }
+    .nav-brand {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: 0.18em;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-book {
+      background: var(--gold);
+      color: var(--white) !important;
+      padding: 8px 20px;
+      border-radius: 2px;
+      font-size: 12px !important;
+      letter-spacing: 0.14em !important;
+      transition: background 0.3s !important;
+    }
+    .nav-book:hover { background: var(--ink) !important; color: var(--white) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 48px 80px;
+    }
+
+    /* Animated ripples */
+    .ripple-bg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(200, 169, 110, 0.18);
+      animation: rippleOut 8s ease-out infinite;
+    }
+    .ripple:nth-child(1) { width: 200px; height: 200px; animation-delay: 0s; }
+    .ripple:nth-child(2) { width: 380px; height: 380px; animation-delay: 1.5s; }
+    .ripple:nth-child(3) { width: 560px; height: 560px; animation-delay: 3s; }
+    .ripple:nth-child(4) { width: 740px; height: 740px; animation-delay: 4.5s; }
+    .ripple:nth-child(5) { width: 920px; height: 920px; animation-delay: 6s; }
+    @keyframes rippleOut {
+      0%   { opacity: 0.8; transform: scale(0.8); }
+      100% { opacity: 0; transform: scale(1.15); }
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 760px;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      animation: fadeUp 1s 0.3s forwards;
+    }
+
+    .hero-bowl {
+      font-size: 80px;
+      line-height: 1;
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 1s 0.5s forwards, bowlFloat 4s 1.5s ease-in-out infinite;
+      display: block;
+    }
+    @keyframes bowlFloat {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+
+    .hero h1 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 300;
+      line-height: 1.35;
+      letter-spacing: 0.12em;
+      color: var(--ink);
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      animation: fadeUp 1s 0.7s forwards;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 2;
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      font-weight: 300;
+      opacity: 0;
+      animation: fadeUp 1s 0.9s forwards;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 1s 1.1s forwards;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      padding: 14px 36px;
+      font-size: 14px;
+      letter-spacing: 0.14em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.35s;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+    .btn-primary:hover {
+      background: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(30,26,20,0.15);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 13px 36px;
+      font-size: 14px;
+      letter-spacing: 0.14em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.35s;
+    }
+    .btn-ghost:hover {
+      background: var(--gold-pale);
+      transform: translateY(-2px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeUp 1s 1.5s forwards;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+    .scroll-text {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTION COMMON ── */
+    section { position: relative; z-index: 1; }
+
+    .section-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1rem;
+    }
+    .section-label::before, .section-label::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 40px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    .section-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: clamp(24px, 3.5vw, 38px);
+      font-weight: 300;
+      line-height: 1.45;
+      letter-spacing: 0.1em;
+      color: var(--ink);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-sub {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.9;
+      max-width: 480px;
+    }
+
+    .gold-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 2rem auto;
+      opacity: 0.5;
+    }
+
+    /* ── WHAT IS ── */
+    .what-is {
+      padding: 100px 48px;
+      background: var(--white);
+    }
+    .what-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .what-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    .bowl-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bowl-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      opacity: 0.2;
+    }
+    .bowl-ring:nth-child(1) { width: 180px; height: 180px; animation: ringPulse 3s ease-in-out infinite; }
+    .bowl-ring:nth-child(2) { width: 260px; height: 260px; animation: ringPulse 3s 0.8s ease-in-out infinite; }
+    .bowl-ring:nth-child(3) { width: 340px; height: 340px; animation: ringPulse 3s 1.6s ease-in-out infinite; }
+    @keyframes ringPulse {
+      0%, 100% { opacity: 0.15; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(1.04); }
+    }
+    .bowl-emoji-lg {
+      font-size: 100px;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 8px 20px rgba(200,169,110,0.3));
+    }
+
+    .what-text .section-label { justify-content: flex-start; }
+    .what-text .section-label::before { display: none; }
+    .what-text .section-sub { max-width: none; }
+
+    .what-facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 2rem;
+    }
+    .fact-item {
+      background: var(--gold-pale);
+      border-radius: 4px;
+      padding: 16px 18px;
+      border-left: 2px solid var(--gold);
+    }
+    .fact-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      color: var(--gold);
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .fact-label {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── CHAKRA ── */
+    .chakra-section {
+      padding: 100px 48px;
+      background: var(--bg);
+    }
+    .chakra-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 60px;
+    }
+    .chakra-header .section-label { justify-content: center; }
+
+    .chakra-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .chakra-item {
+      display: grid;
+      grid-template-columns: 56px 100px 1fr auto;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 28px;
+      background: var(--white);
+      border-radius: 4px;
+      border: 1px solid rgba(200,169,110,0.15);
+      transition: all 0.35s;
+      cursor: default;
+    }
+    .chakra-item:hover {
+      transform: translateX(8px);
+      border-color: var(--gold);
+      box-shadow: 0 4px 20px rgba(200,169,110,0.12);
+    }
+    .chakra-dot {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .chakra-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+    .chakra-name {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+    .chakra-desc {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 300;
+    }
+    .chakra-benefit {
+      font-size: 12px;
+      color: var(--gold);
+      text-align: right;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      padding: 100px 48px;
+      background: var(--ink);
+    }
+    .services-header {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 70px;
+    }
+    .services-header .section-label { justify-content: center; }
+    .services-header .section-label { color: var(--gold-light); }
+    .services-header .section-label::before,
+    .services-header .section-label::after { background: var(--gold-light); }
+    .services-header .section-title { color: var(--white); }
+    .services-header .section-sub { color: rgba(255,255,255,0.5); margin: 0 auto; }
+
+    .services-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 700px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    .service-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(200,169,110,0.25);
+      border-radius: 4px;
+      padding: 40px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .service-card:hover {
+      background: rgba(255,255,255,0.07);
+      transform: translateY(-4px);
+      border-color: rgba(200,169,110,0.5);
+    }
+    .service-card:hover::before { opacity: 1; }
+
+    .service-card.featured {
+      border-color: var(--gold);
+      background: rgba(200,169,110,0.06);
+    }
+    .service-card.featured::before { opacity: 1; }
+
+    .service-badge {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      border: 1px solid rgba(200,169,110,0.4);
+      padding: 4px 12px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    .service-icon { font-size: 48px; margin-bottom: 16px; display: block; }
+
+    .service-name {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .service-name-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .service-desc {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.95;
+      font-weight: 300;
+      margin-bottom: 24px;
+    }
+
+    .service-includes {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+    .service-includes li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 8px;
+    }
+    .service-includes li::before {
+      content: '✦';
+      color: var(--gold);
+      font-size: 10px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .service-duration {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+    }
+
+    .service-price-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+    .price-curr {
+      font-size: 13px;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+    }
+    .price-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      color: var(--gold);
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .btn-book {
+      display: block;
+      text-align: center;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 13px 24px;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.35s;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+    .btn-book:hover {
+      background: var(--gold);
+      color: var(--ink);
+    }
+    .service-card.featured .btn-book {
+      background: var(--gold);
+      color: var(--ink);
+    }
+    .service-card.featured .btn-book:hover {
+      background: var(--gold-light);
+    }
+
+    /* ── FLOW ── */
+    .flow-section {
+      padding: 100px 48px;
+      background: var(--white);
+    }
+    .flow-header {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 70px;
+    }
+    .flow-header .section-label { justify-content: center; }
+
+    .flow-steps {
+      max-width: 780px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .flow-steps::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 28px;
+      bottom: 28px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--gold), rgba(200,169,110,0.1));
+    }
+
+    .flow-step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 28px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .step-num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      color: var(--gold);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .step-body { padding-top: 12px; }
+    .step-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 6px;
+      letter-spacing: 0.06em;
+    }
+    .step-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.9;
+      font-weight: 300;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      padding: 100px 48px;
+      background: var(--gold-pale);
+    }
+    .test-header {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 60px;
+    }
+    .test-header .section-label { justify-content: center; }
+
+    .test-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 768px) {
+      .test-grid { grid-template-columns: 1fr; }
+    }
+
+    .test-card {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 32px 28px;
+      border: 1px solid rgba(200,169,110,0.2);
+    }
+    .test-stars {
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 3px;
+      margin-bottom: 14px;
+    }
+    .test-text {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.95;
+      font-weight: 300;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .test-author {
+      font-size: 13px;
+      color: var(--ink);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+    }
+    .test-date {
+      font-size: 12px;
+      color: rgba(107,95,78,0.5);
+      margin-top: 3px;
+    }
+
+    /* ── NOTES ── */
+    .notes-section {
+      padding: 80px 48px;
+      background: var(--bg);
+    }
+    .notes-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .notes-header { margin-bottom: 40px; }
+    .notes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 600px) {
+      .notes-grid { grid-template-columns: 1fr; }
+    }
+    .note-card {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 24px 22px;
+      border: 1px solid rgba(200,169,110,0.15);
+      display: flex;
+      gap: 14px;
+    }
+    .note-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .note-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 4px;
+      letter-spacing: 0.04em;
+    }
+    .note-body {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* ── BOOKING ── */
+    .booking-section {
+      padding: 100px 48px;
+      background: linear-gradient(135deg, #1e1a14 0%, #2c2518 50%, #1e1a14 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .booking-section::before {
+      content: '缽';
+      position: absolute;
+      font-size: 400px;
+      font-family: 'Noto Serif TC', serif;
+      color: rgba(200,169,110,0.03);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .booking-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .booking-section .section-label { justify-content: center; color: var(--gold-light); }
+    .booking-section .section-label::before,
+    .booking-section .section-label::after { background: var(--gold-light); }
+    .booking-section .section-title { color: var(--white); text-align: center; }
+    .booking-section .section-sub {
+      color: rgba(255,255,255,0.45);
+      margin: 1rem auto 2.5rem;
+      text-align: center;
+      max-width: 420px;
+    }
+
+    .booking-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 2rem;
+    }
+    .booking-opt {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      border: 1px solid rgba(200,169,110,0.25);
+      border-radius: 4px;
+      background: rgba(255,255,255,0.03);
+      text-decoration: none;
+      transition: all 0.35s;
+    }
+    .booking-opt:hover {
+      border-color: var(--gold);
+      background: rgba(200,169,110,0.07);
+      transform: translateY(-2px);
+    }
+    .booking-opt-name {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 16px;
+      color: var(--white);
+      letter-spacing: 0.08em;
+    }
+    .booking-opt-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      color: var(--gold);
+    }
+
+    .contact-info {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      line-height: 2;
+    }
+    .contact-info a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #110f0b;
+      padding: 40px 48px;
+      text-align: center;
+    }
+    .footer-brand {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      margin-bottom: 12px;
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .what-is, .chakra-section, .services, .flow-section,
+      .testimonials, .notes-section, .booking-section { padding: 70px 24px; }
+      footer { padding: 32px 24px; }
+      .chakra-item {
+        grid-template-columns: 40px 1fr;
+        gap: 12px;
+      }
+      .chakra-num { display: none; }
+      .chakra-benefit { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">頌缽療癒 ✦ Singing Bowl</a>
+  <ul class="nav-links">
+    <li><a href="#about">關於頌缽</a></li>
+    <li><a href="#services">療癒項目</a></li>
+    <li><a href="#flow">體驗流程</a></li>
+    <li><a href="#booking" class="nav-book">立即預約</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="ripple-bg">
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+  </div>
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Sound Healing · Chakra Cleansing</span>
+    <span class="hero-bowl">🪘</span>
+    <h1>讓振動<em>喚醒</em>你的<br>身體自癒力</h1>
+    <p class="hero-desc">
+      透過古老頌缽的純淨音頻，深層清理七大脈輪能量，<br>
+      釋放積累的壓力與負能量，找回內在的平靜與光彩。
+    </p>
+    <div class="hero-ctas">
+      <a href="#services" class="btn-primary">探索療癒項目</a>
+      <a href="#about" class="btn-ghost">認識頌缽</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span class="scroll-text">SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- WHAT IS -->
+<section class="what-is" id="about">
+  <div class="what-inner">
+    <div class="bowl-visual">
+      <div class="bowl-ring"></div>
+      <div class="bowl-ring"></div>
+      <div class="bowl-ring"></div>
+      <span class="bowl-emoji-lg">🪘</span>
+    </div>
+    <div class="what-text">
+      <div class="section-label">What is Singing Bowl</div>
+      <h2 class="section-title">源自喜馬拉雅山<br>的療癒智慧</h2>
+      <p class="section-sub">
+        頌缽（Singing Bowl）起源於西藏與尼泊爾，有超過2500年的歷史。
+        透過金屬缽被敲擊或摩擦時產生的泛音，能與人體的生物電磁場共振，
+        幫助釋放緊張、深層放鬆，並協助七大脈輪的能量平衡。
+      </p>
+      <div class="what-facts">
+        <div class="fact-item">
+          <div class="fact-num">2500+</div>
+          <div class="fact-label">年歷史傳承</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-num">432Hz</div>
+          <div class="fact-label">自然療癒頻率</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-num">7</div>
+          <div class="fact-label">脈輪全方位清理</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-num">∞</div>
+          <div class="fact-label">深層振動共鳴</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAKRA -->
+<section class="chakra-section">
+  <div class="chakra-header">
+    <div class="section-label">Seven Chakras</div>
+    <h2 class="section-title">七大脈輪能量清理</h2>
+    <p class="section-sub">每個脈輪對應身體不同的器官與情緒狀態，頌缽振動能深入清理能量阻塞，讓生命能量自由流動。</p>
+  </div>
+  <div class="chakra-grid">
+    <div class="chakra-item">
+      <div class="chakra-dot" style="background:rgba(192,57,43,0.12);">🔴</div>
+      <div class="chakra-num">01 · 海底輪</div>
+      <div>
+        <div class="chakra-name">Muladhara</div>
+        <div class="chakra-desc">安全感、根基、生存本能</div>
+      </div>
+      <div class="chakra-benefit">穩定 · 踏實</div>
+    </div>
+    <div class="chakra-item">
+      <div class="chakra-dot" style="background:rgba(230,126,34,0.12);">🟠</div>
+      <div class="chakra-num">02 · 臍輪</div>
+      <div>
+        <div class="chakra-name">Svadhisthana</div>
+        <div class="chakra-desc">情感、創造力、親密關係</div>
+      </div>
+      <div class="chakra-benefit">流動 · 創造</div>
+    </div>
+    <div class="chakra-item">
+      <div class="chakra-dot" style="background:rgba(241,196,15,0.12);">🟡</div>
+      <div class="chakra-num">03 · 太陽神經叢</div>
+      <div>
+        <div class="chakra-name">Manipura</div>
+        <div class="chakra-desc">自信、意志力、個人力量</div>
+      </div>
+      <div class="chakra-benefit">自信 · 力量</div>
+    </div>
+    <div class="chakra-item">
+      <div class="chakra-dot" style="background:rgba(39,174,96,0.12);">🟢</div>
+      <div class="chakra-num">04 · 心輪</div>
+      <div>
+        <div class="chakra-name">Anahata</div>
+        <div class="chakra-desc">愛、慈悲、連結、療癒</div>
+      </div>
+      <div class="chakra-benefit">愛 · 療癒</div>
+    </div>
+    <div class="chakra-item">
+      <div class="chakra-dot" style="background:rgba(41,128,185,0.12);">🔵</div>
+      <div class="chakra-num">05 · 喉輪</div>
+      <div>
+        <div class="chakra-name">Vishuddha</div>
+        <div class="chakra-desc">表達、溝通、真實性</div>
+      </div>
+      <div class="chakra-benefit">表達 · 真實</div>
+    </div>
+    <div class="chakra-item">
+      <div class="chakra-dot" style="background:rgba(142,68,173,0.12);">🟣</div>
+      <div class="chakra-num">06 · 眉心輪</div>
+      <div>
+        <div class="chakra-name">Ajna</div>
+        <div class="chakra-desc">直覺、洞察、內在智慧</div>
+      </div>
+      <div class="chakra-benefit">直覺 · 洞見</div>
+    </div>
+    <div class="chakra-item">
+      <div class="chakra-dot" style="background:rgba(155,89,182,0.12);">💜</div>
+      <div class="chakra-num">07 · 頂輪</div>
+      <div>
+        <div class="chakra-name">Sahasrara</div>
+        <div class="chakra-desc">靈性連結、覺知、宇宙意識</div>
+      </div>
+      <div class="chakra-benefit">覺知 · 圓滿</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div class="section-label">Our Services</div>
+    <h2 class="section-title">療癒體驗項目</h2>
+    <p class="section-sub">精心設計的兩種療程，滿足不同的身心需求，每一次都是與自己的深度相遇。</p>
+  </div>
+  <div class="services-grid">
+
+    <!-- Service 1 -->
+    <div class="service-card featured">
+      <div class="service-badge">SIGNATURE · 招牌療程</div>
+      <span class="service-icon">🪘</span>
+      <div class="service-name">七脈輪頌缽清理</div>
+      <span class="service-name-en">Seven Chakra Singing Bowl Cleansing</span>
+      <p class="service-desc">
+        透過七個調頻頌缽，逐一對應並清理每個脈輪的能量阻塞，
+        讓生命能量在全身暢通流動。深層釋放壓力，找回身心平衡。
+      </p>
+      <ul class="service-includes">
+        <li>七大脈輪逐一音頻調頻</li>
+        <li>全身能量場掃描與清理</li>
+        <li>深層放鬆導引冥想</li>
+        <li>療程後能量狀態解說</li>
+        <li>專業療癒師一對一陪伴</li>
+      </ul>
+      <div class="service-duration">⏱ 療程時長：約 60 分鐘</div>
+      <div class="service-price-wrap">
+        <span class="price-curr">NT$</span>
+        <span class="price-num">888</span>
+      </div>
+      <a href="#booking" class="btn-book">立即預約此療程</a>
+    </div>
+
+    <!-- Service 2 -->
+    <div class="service-card">
+      <div class="service-badge">BEAUTY · 美顏療程</div>
+      <span class="service-icon">✨</span>
+      <div class="service-name">頌缽美顏拉提</div>
+      <span class="service-name-en">Singing Bowl Facial Lifting</span>
+      <p class="service-desc">
+        結合頌缽振動與臉部穴位按壓，透過音頻共振刺激膠原蛋白再生，
+        緊緻輪廓、淡化細紋，讓你由內而外煥發自然光采。
+      </p>
+      <ul class="service-includes">
+        <li>頌缽臉部振動按摩</li>
+        <li>提拉淋巴引流手技</li>
+        <li>穴位能量活化導引</li>
+        <li>肌膚深層放鬆舒緩</li>
+      </ul>
+      <div class="service-duration">⏱ 療程時長：約 30 分鐘</div>
+      <div class="service-price-wrap">
+        <span class="price-curr">NT$</span>
+        <span class="price-num">399</span>
+      </div>
+      <a href="#booking" class="btn-book">立即預約此療程</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="flow-section" id="flow">
+  <div class="flow-header">
+    <div class="section-label">Experience Flow</div>
+    <h2 class="section-title">體驗流程</h2>
+    <p class="section-sub">從踏入療癒空間的那一刻起，每一個步驟都是為你精心設計的感官旅程。</p>
+  </div>
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="step-num">01</div>
+      <div class="step-body">
+        <div class="step-title">迎賓諮詢</div>
+        <div class="step-desc">療癒師與您輕鬆交流，了解您當下的身心狀態、壓力來源與療癒需求，為您量身規劃最適合的體驗方式。</div>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">02</div>
+      <div class="step-body">
+        <div class="step-title">空間沉澱</div>
+        <div class="step-desc">進入溫暖的療癒空間，搭配香氛與輕柔音樂，協助您的身心從日常紛擾中緩緩抽離，進入接受狀態。</div>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">03</div>
+      <div class="step-body">
+        <div class="step-title">頌缽療癒</div>
+        <div class="step-desc">由專業療癒師以頌缽繞行全身，對應脈輪位置進行音頻調頻。振動穿透每個細胞，釋放深層阻塞的能量。</div>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">04</div>
+      <div class="step-body">
+        <div class="step-title">靜默整合</div>
+        <div class="step-desc">療程結束後，在靜謐中讓能量充分整合沉澱，療癒師輕聲引導您慢慢回到當下的意識。</div>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">05</div>
+      <div class="step-body">
+        <div class="step-title">能量回饋</div>
+        <div class="step-desc">分享您的感受，療癒師為您解說能量變化，並提供個人化的日常保養建議，讓療癒效果延伸到生活中。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="test-header">
+    <div class="section-label">Guest Stories</div>
+    <h2 class="section-title">來自真實體驗者的回饋</h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">「做完七脈輪療程，整個人像是被洗滌過一樣輕盈。以前肩頸的慢性緊繃竟然在當天就明顯舒緩，真的很驚訝音頻的力量這麼強大。」</p>
+      <div class="test-author">陳小姐 · 台北</div>
+      <div class="test-date">七脈輪頌缽清理</div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">「美顏拉提療程做完臉真的有拉提感！本來半信半疑，但振動在臉上的感覺很奇妙，做完氣色也變好了，朋友說我看起來更有精神。」</p>
+      <div class="test-author">林女士 · 台中</div>
+      <div class="test-date">頌缽美顏拉提</div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">「長期失眠的我，在頌缽療程中第一次在外面的空間睡著了。那種深度放鬆的感覺是我很久沒有體驗過的，隔天睡眠品質也好很多。」</p>
+      <div class="test-author">王先生 · 新竹</div>
+      <div class="test-date">七脈輪頌缽清理</div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTES -->
+<section class="notes-section">
+  <div class="notes-inner">
+    <div class="notes-header">
+      <div class="section-label" style="justify-content:flex-start;">
+        <span style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:13px; letter-spacing:0.22em; color:var(--gold);">— Important Notes</span>
+      </div>
+      <h2 class="section-title">體驗須知</h2>
+    </div>
+    <div class="notes-grid">
+      <div class="note-card">
+        <span class="note-icon">🕐</span>
+        <div>
+          <div class="note-title">請提早到達</div>
+          <div class="note-body">請於預約時間前 10 分鐘到達，讓身心有時間從外部環境轉換，以獲得最佳療癒效果。</div>
+        </div>
+      </div>
+      <div class="note-card">
+        <span class="note-icon">👗</span>
+        <div>
+          <div class="note-title">穿著舒適衣物</div>
+          <div class="note-body">建議穿著寬鬆、舒適的衣物，避免緊身或金屬配件，以利能量的流動與振動的傳遞。</div>
+        </div>
+      </div>
+      <div class="note-card">
+        <span class="note-icon">🍽️</span>
+        <div>
+          <div class="note-title">避免飽食後體驗</div>
+          <div class="note-body">建議在療程前 1 小時避免大量進食，以半空腹或輕食狀態進行，有助深層放鬆。</div>
+        </div>
+      </div>
+      <div class="note-card">
+        <span class="note-icon">🤰</span>
+        <div>
+          <div class="note-title">特殊狀況請告知</div>
+          <div class="note-body">懷孕初期、裝有心臟節律器或有特殊疾病者，請事先告知療癒師，以便調整療程方式。</div>
+        </div>
+      </div>
+      <div class="note-card">
+        <span class="note-icon">💧</span>
+        <div>
+          <div class="note-title">療程後多補充水分</div>
+          <div class="note-body">頌缽療程會加速身體能量代謝，建議療程後多喝水，幫助排除釋放的負能量。</div>
+        </div>
+      </div>
+      <div class="note-card">
+        <span class="note-icon">📵</span>
+        <div>
+          <div class="note-title">請勿攜帶電子設備</div>
+          <div class="note-body">為維護療癒空間的品質，進入後請將手機調至靜音或關機，讓自己完全沉浸在當下。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking-section" id="booking">
+  <div class="booking-inner">
+    <div class="section-label">Reserve Your Session</div>
+    <h2 class="section-title">預約你的療癒時刻</h2>
+    <p class="section-sub">每一次的相遇都是獨一無二的。選擇你想要的療程，讓我們一起開啟這段回歸自我的旅程。</p>
+
+    <div class="booking-options">
+      <a href="tel:+886" class="booking-opt">
+        <span class="booking-opt-name">🪘 七脈輪頌缽清理（60分鐘）</span>
+        <span class="booking-opt-price">NT$ 888</span>
+      </a>
+      <a href="tel:+886" class="booking-opt">
+        <span class="booking-opt-name">✨ 頌缽美顏拉提（30分鐘）</span>
+        <span class="booking-opt-price">NT$ 399</span>
+      </a>
+    </div>
+
+    <p class="contact-info">
+      電話預約：<a href="tel:+886">0912-345-678</a><br>
+      LINE 預約：<a href="#">@singingbowl</a><br>
+      營業時間：週二至週日  10:00 — 20:00
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">頌缽療癒 · Singing Bowl Healing</div>
+  <div class="footer-copy">© 2025 Singing Bowl Healing · All Rights Reserved</div>
+</footer>
+
+</body>
+</html>
