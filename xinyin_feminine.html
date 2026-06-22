@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>心音園丁｜暑夏療癒 · 深度頌缽 · 到府服務</title>
+  <meta name="description" content="心音園丁暑夏療癒企畫｜顏來如此$399、小清理音療缽療$1299、大清理90min$1999、到府深度清理$2800。台中清水預約制工作室。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Noto+Serif+TC:wght@300;400;500&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream:   #f9f5f2;
+      --petal:   #f2ebe6;
+      --rose:    #c4a0a0;
+      --rose-d:  #a07878;
+      --rose-pale: #edddd8;
+      --cocoa:   #3d2e2e;
+      --cocoa-m: #6b5252;
+      --apricot: #e8c9b8;
+      --white:   #fffcfb;
+      --pad-h:   clamp(24px, 7vw, 96px);
+      --pad-v:   clamp(64px, 11vw, 120px);
+      --max:     1120px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: var(--cream);
+      color: var(--cocoa);
+      line-height: 1.8;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+      padding: 18px var(--pad-h);
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(249,245,242,0.92);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 0.5px solid rgba(196,160,160,0.25);
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(14px, 2vw, 17px);
+      font-weight: 400; font-style: italic;
+      color: var(--cocoa); letter-spacing: 0.12em;
+    }
+    .nav-r { display: flex; align-items: center; gap: clamp(14px, 2.5vw, 28px); }
+    .nav-link { font-size: 12px; color: var(--cocoa-m); letter-spacing: 0.1em; transition: color .3s; }
+    .nav-link:hover { color: var(--rose); }
+    .nav-cta {
+      font-size: 11px; letter-spacing: 0.14em;
+      color: var(--white); background: var(--rose);
+      padding: 8px 20px; border-radius: 40px;
+      transition: background .3s;
+    }
+    .nav-cta:hover { background: var(--cocoa); }
+    @media(max-width:600px){ .nav-link.hide-sm { display:none; } }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100svh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 var(--pad-h) clamp(48px, 8vw, 80px);
+      position: relative; overflow: hidden;
+    }
+
+    /* Background decorative circles */
+    .hero-bg {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .hero-circle {
+      position: absolute; border-radius: 50%;
+      background: var(--rose-pale); opacity: 0.35;
+    }
+    .hc1 { width: clamp(300px,55vw,620px); height: clamp(300px,55vw,620px); top: -12%; right: -10%; }
+    .hc2 { width: clamp(160px,28vw,320px); height: clamp(160px,28vw,320px); top: 18%; right: 22%; opacity: 0.2; }
+    .hc3 { width: clamp(80px,14vw,160px); height: clamp(80px,14vw,160px); bottom: 22%; left: 4%; opacity: 0.18; }
+
+    .hero-inner { position: relative; z-index: 2; max-width: 680px; }
+    .hero-kana {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: clamp(11px,1.5vw,13px); letter-spacing: 0.28em;
+      color: var(--rose); margin-bottom: 1.6rem;
+      display: flex; align-items: center; gap: 12px;
+      opacity: 0; animation: fadeUp .9s .2s forwards;
+    }
+    .hero-kana::before { content:''; display:block; width:40px; height:0.5px; background:var(--rose); }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 8vw, 88px);
+      font-weight: 300; line-height: 1.12; letter-spacing: 0.04em;
+      color: var(--cocoa);
+      opacity: 0; animation: fadeUp .9s .4s forwards;
+    }
+    .hero h1 em { font-style: italic; color: var(--rose); }
+    .hero-sub {
+      font-size: clamp(13px,1.7vw,15px); color: var(--cocoa-m);
+      font-weight: 300; line-height: 2;
+      margin: 1.4rem 0 2.4rem;
+      max-width: 420px;
+      opacity: 0; animation: fadeUp .9s .6s forwards;
+    }
+    .hero-actions {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp .9s .8s forwards;
+    }
+    .btn-fill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--cocoa); color: var(--cream);
+      padding: clamp(12px,2vw,15px) clamp(28px,4vw,40px);
+      border-radius: 40px; font-size: 13px; letter-spacing: 0.12em;
+      transition: background .3s, transform .3s;
+    }
+    .btn-fill:hover { background: var(--rose-d); transform: translateY(-2px); }
+    .btn-line {
+      display: inline-flex; align-items: center;
+      border: 0.5px solid var(--rose); color: var(--rose);
+      padding: clamp(11px,1.8vw,14px) clamp(28px,4vw,40px);
+      border-radius: 40px; font-size: 13px; letter-spacing: 0.12em;
+      transition: background .3s, transform .3s;
+    }
+    .btn-line:hover { background: var(--rose-pale); transform: translateY(-2px); }
+
+    /* floating date badge */
+    .hero-date {
+      position: absolute; top: clamp(100px,16vw,160px); right: var(--pad-h);
+      z-index: 3;
+      display: flex; flex-direction: column; align-items: center;
+      background: var(--white); border: 0.5px solid rgba(196,160,160,0.3);
+      border-radius: 16px; padding: 16px 20px;
+      opacity: 0; animation: fadeIn 1s 1.2s forwards;
+    }
+    .hero-date .hd-label { font-size: 10px; letter-spacing: 0.18em; color: var(--rose); margin-bottom: 6px; }
+    .hero-date .hd-date { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; color: var(--cocoa); line-height: 1; }
+    .hero-date .hd-until { font-size: 10px; letter-spacing: 0.12em; color: var(--cocoa-m); margin-top: 4px; }
+    @media(max-width:560px){ .hero-date { display:none; } }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex; align-items: center; gap: 16px;
+      padding: 0 var(--pad-h); margin: 0;
+    }
+    .divider-line { flex:1; height:0.5px; background:rgba(196,160,160,0.3); }
+    .divider-text { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:12px; letter-spacing:0.2em; color:var(--rose); white-space:nowrap; }
+
+    /* ── SECTION COMMON ── */
+    .eyebrow {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 12px; letter-spacing: 0.24em; color: var(--rose);
+      display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;
+    }
+    .eyebrow::after { content:''; flex:0 0 28px; height:0.5px; background:var(--rose); }
+    h2.sec-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: clamp(22px, 4vw, 40px);
+      font-weight: 300; letter-spacing: 0.08em; line-height: 1.4;
+      color: var(--cocoa); margin-bottom: 1rem;
+    }
+    .sec-sub { font-size: clamp(13px,1.6vw,14px); color: var(--cocoa-m); font-weight:300; line-height:1.95; }
+
+    /* ── INTRO BAND ── */
+    .intro-band {
+      padding: var(--pad-v) var(--pad-h);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(32px,6vw,80px); align-items: center;
+      max-width: var(--max); margin: 0 auto;
+    }
+    @media(max-width:700px){ .intro-band { grid-template-columns:1fr; } }
+
+    .intro-visual {
+      position: relative; display:flex; align-items:center; justify-content:center;
+      min-height: clamp(220px, 36vw, 380px);
+    }
+    .iv-ring {
+      position:absolute; border-radius:50%;
+      border: 0.5px solid rgba(196,160,160,0.4);
+    }
+    .iv-ring:nth-child(1){ width:clamp(100px,16vw,180px); height:clamp(100px,16vw,180px); animation:ringPulse 4s ease-in-out infinite; }
+    .iv-ring:nth-child(2){ width:clamp(160px,24vw,280px); height:clamp(160px,24vw,280px); animation:ringPulse 4s 1s ease-in-out infinite; }
+    .iv-ring:nth-child(3){ width:clamp(220px,33vw,380px); height:clamp(220px,33vw,380px); animation:ringPulse 4s 2s ease-in-out infinite; }
+    @keyframes ringPulse { 0%,100%{opacity:.3;transform:scale(1)} 50%{opacity:.7;transform:scale(1.03)} }
+    .iv-bowl {
+      width: clamp(90px,16vw,140px); position:relative; z-index:2;
+      filter: drop-shadow(0 6px 20px rgba(196,160,160,0.4));
+      animation: bowlFloat 5s ease-in-out infinite;
+    }
+    @keyframes bowlFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+    .intro-facts { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:1.8rem; }
+    .fact {
+      background: var(--white); border: 0.5px solid rgba(196,160,160,0.25);
+      border-radius: 12px; padding: clamp(14px,2vw,18px);
+    }
+    .fact-n { font-family:'Cormorant Garamond',serif; font-size:clamp(24px,3.5vw,32px); font-weight:300; color:var(--rose-d); line-height:1; margin-bottom:4px; }
+    .fact-l { font-size:11px; color:var(--cocoa-m); letter-spacing:.05em; }
+
+    /* ── SERVICES ── */
+    .services-section { background: var(--petal); padding: var(--pad-v) var(--pad-h); }
+    .services-head { text-align:center; max-width:560px; margin:0 auto clamp(40px,6vw,72px); }
+    .services-head .eyebrow { justify-content:center; }
+    .services-head .eyebrow::after { display:none; }
+    .services-head .eyebrow::before { content:''; flex:0 0 28px; height:0.5px; background:var(--rose); }
+
+    /* Summer badge */
+    .summer-pill {
+      display: inline-flex; align-items:center; gap:8px;
+      background: var(--white); border: 0.5px solid rgba(196,160,160,0.4);
+      border-radius: 40px; padding: 8px 18px;
+      font-size:12px; color:var(--cocoa-m); letter-spacing:.08em;
+      margin-bottom: 2rem;
+    }
+    .summer-pill .sp-dot { width:6px; height:6px; border-radius:50%; background:var(--rose); }
+    .summer-pill strong { color:var(--rose); }
+
+    /* Card grid */
+    .cards-wrap { max-width: var(--max); margin: 0 auto; }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(10px,1.5vw,16px);
+    }
+    @media(max-width:900px){ .cards-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:500px){ .cards-grid { grid-template-columns: 1fr; } }
+
+    .scard {
+      background: var(--white);
+      border: 0.5px solid rgba(196,160,160,0.25);
+      border-radius: 20px;
+      padding: clamp(22px,3vw,32px) clamp(18px,2.5vw,26px);
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+      transition: transform .4s, box-shadow .4s;
+    }
+    .scard:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(196,160,160,0.18); }
+    .scard.featured { background: var(--cocoa); }
+    .scard.home { background: linear-gradient(160deg, #f0e8e8, #f9f5f2); border-color: rgba(196,160,160,0.5); }
+
+    .scard-tag {
+      display: inline-block; font-size: 9px; letter-spacing: .18em;
+      color: var(--rose); border: 0.5px solid rgba(196,160,160,0.5);
+      border-radius: 20px; padding: 3px 10px; margin-bottom: 16px; align-self:flex-start;
+    }
+    .scard.featured .scard-tag { color: rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.2); }
+    .scard.home .scard-tag { color: var(--rose-d); border-color: var(--rose); }
+
+    .scard-name {
+      font-family: 'Noto Serif TC', serif;
+      font-size: clamp(17px,2.2vw,22px); font-weight:400;
+      color: var(--cocoa); letter-spacing:.06em; margin-bottom:4px;
+    }
+    .scard.featured .scard-name { color: var(--white); }
+    .scard.home .scard-name { color: var(--cocoa); }
+
+    .scard-en {
+      font-family:'Cormorant Garamond',serif; font-style:italic;
+      font-size: 11px; letter-spacing:.1em;
+      color: var(--rose); margin-bottom:14px; display:block;
+    }
+    .scard.featured .scard-en { color: rgba(255,255,255,0.4); }
+
+    .scard-desc { font-size:12px; color:var(--cocoa-m); line-height:1.9; font-weight:300; margin-bottom:14px; flex:1; }
+    .scard.featured .scard-desc { color: rgba(255,255,255,0.55); }
+
+    .scard-items { list-style:none; margin-bottom:16px; display:flex; flex-direction:column; gap:5px; }
+    .scard-items li { font-size:12px; color:var(--cocoa-m); display:flex; align-items:flex-start; gap:7px; }
+    .scard-items li::before { content:'·'; color:var(--rose); font-size:16px; line-height:.9; flex-shrink:0; }
+    .scard.featured .scard-items li { color:rgba(255,255,255,0.6); }
+    .scard.featured .scard-items li::before { color:rgba(232,201,184,0.8); }
+
+    .scard-duration { font-size:10px; letter-spacing:.1em; color: rgba(196,160,160,0.7); margin-bottom:10px; }
+    .scard.featured .scard-duration { color:rgba(255,255,255,0.3); }
+
+    /* addons */
+    .addon-tag {
+      display:inline-flex; align-items:center; gap:5px;
+      font-size:10px; color:var(--cocoa-m);
+      background: var(--petal); border:0.5px solid rgba(196,160,160,0.3);
+      border-radius:20px; padding:3px 10px; margin-bottom:5px;
+    }
+    .addon-tag .at-price { color:var(--rose-d); font-weight:500; }
+    .scard.featured .addon-tag { background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.15); color:rgba(255,255,255,0.5); }
+    .scard.featured .addon-tag .at-price { color:var(--apricot); }
+    .scard.home .addon-tag { background:rgba(196,160,160,0.08); }
+    .addons-wrap { display:flex; flex-direction:column; align-items:flex-start; gap:4px; margin-bottom:14px; }
+
+    .scard-price {
+      display:flex; align-items:baseline; gap:5px; margin-bottom:16px;
+    }
+    .price-sym { font-size:11px; color:var(--rose); }
+    .price-n {
+      font-family:'Cormorant Garamond',serif;
+      font-size: clamp(36px,5vw,48px); font-weight:300; color:var(--cocoa); line-height:1;
+    }
+    .scard.featured .price-n { color:var(--white); }
+    .scard.featured .price-sym { color:var(--apricot); }
+    .scard.home .price-n { color:var(--rose-d); }
+    .price-orig { font-size:11px; color:rgba(107,82,82,0.4); text-decoration:line-through; }
+
+    .scard-btn {
+      display:block; text-align:center;
+      border: 0.5px solid rgba(196,160,160,0.5); color:var(--rose);
+      padding:11px; font-size:12px; letter-spacing:.12em;
+      border-radius:40px; transition: all .3s;
+    }
+    .scard-btn:hover { background:var(--rose); color:var(--white); border-color:var(--rose); }
+    .scard.featured .scard-btn { background:var(--apricot); color:var(--cocoa); border-color:var(--apricot); }
+    .scard.featured .scard-btn:hover { background:var(--white); }
+    .scard.home .scard-btn { border-color:var(--rose); color:var(--rose-d); }
+    .scard.home .scard-btn:hover { background:var(--rose); color:var(--white); }
+
+    /* NEW ribbon */
+    .new-wrap { position:absolute; top:0; right:0; overflow:hidden; width:70px; height:70px; }
+    .new-wrap span {
+      position:absolute; display:block; width:100px;
+      background:var(--rose); color:var(--white);
+      font-size:8px; letter-spacing:.14em; text-align:center; padding:6px 0;
+      transform: rotate(45deg); top:14px; right:-24px;
+    }
+
+    /* Combo block */
+    .combo-block { max-width:var(--max); margin: clamp(32px,5vw,56px) auto 0; }
+    .combo-head { text-align:center; margin-bottom:20px; }
+    .combo-head-text { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(13px,2vw,16px); color:var(--rose); letter-spacing:.14em; }
+    .combo-grid { display:grid; grid-template-columns:1fr 1fr; gap:clamp(10px,2vw,16px); }
+    @media(max-width:500px){ .combo-grid { grid-template-columns:1fr; } }
+    .ccombo {
+      background:var(--white); border:0.5px solid rgba(196,160,160,0.25);
+      border-radius:16px; padding:clamp(18px,3vw,26px) clamp(18px,3vw,26px);
+      display:grid; grid-template-columns:1fr auto; gap:12px; align-items:center;
+    }
+    .ccombo.hi { border-color:rgba(196,160,160,0.6); background:linear-gradient(135deg,#f9f0ee,#fffcfb); }
+    .cc-label { font-size:10px; letter-spacing:.16em; color:var(--rose); margin-bottom:5px; }
+    .cc-name { font-family:'Noto Serif TC',serif; font-size:clamp(14px,2vw,16px); color:var(--cocoa); margin-bottom:4px; }
+    .cc-desc { font-size:11px; color:var(--cocoa-m); line-height:1.7; }
+    .cc-price-wrap { text-align:right; }
+    .cc-sym { font-size:10px; color:var(--rose); }
+    .cc-num { font-family:'Cormorant Garamond',serif; font-size:clamp(28px,4vw,38px); font-weight:300; color:var(--cocoa); line-height:1; display:block; }
+    .cc-orig { font-size:10px; color:rgba(107,82,82,0.4); text-decoration:line-through; display:block; margin-top:2px; }
+    .ccombo.hi .cc-num { color:var(--rose-d); }
+
+    /* ── PROCESS ── */
+    .process-section { padding:var(--pad-v) var(--pad-h); }
+    .process-inner { max-width:var(--max); margin:0 auto; display:grid; grid-template-columns:1fr 2fr; gap:clamp(32px,6vw,80px); align-items:start; }
+    @media(max-width:700px){ .process-inner { grid-template-columns:1fr; } }
+    .process-sticky { position:sticky; top:120px; }
+    .process-steps { display:flex; flex-direction:column; gap:0; }
+    .pstep {
+      display:grid; grid-template-columns:48px 1fr;
+      gap:16px; padding:clamp(18px,3vw,28px) 0;
+      border-bottom:0.5px solid rgba(196,160,160,0.2);
+    }
+    .pstep:last-child { border-bottom:none; }
+    .ps-num {
+      width:36px; height:36px; border-radius:50%;
+      border:0.5px solid rgba(196,160,160,0.4);
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Cormorant Garamond',serif; font-size:15px; color:var(--rose);
+    }
+    .ps-title { font-family:'Noto Serif TC',serif; font-size:clamp(14px,2vw,16px); font-weight:500; color:var(--cocoa); margin-bottom:5px; letter-spacing:.05em; }
+    .ps-desc { font-size:13px; color:var(--cocoa-m); line-height:1.85; font-weight:300; }
+
+    /* ── TESTIMONIALS ── */
+    .test-section { padding:var(--pad-v) var(--pad-h); background:var(--petal); }
+    .test-inner { max-width:var(--max); margin:0 auto; }
+    .test-head { margin-bottom:clamp(32px,5vw,56px); }
+    .test-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(12px,2vw,20px); }
+    @media(max-width:700px){ .test-grid { grid-template-columns:1fr; max-width:440px; } }
+    .tcard {
+      background:var(--white); border-radius:16px;
+      padding:clamp(22px,3vw,30px) clamp(18px,3vw,26px);
+      border:0.5px solid rgba(196,160,160,0.2);
+    }
+    .tcard-stars { color:var(--rose); font-size:12px; letter-spacing:4px; margin-bottom:14px; }
+    .tcard-text { font-size:13px; color:var(--cocoa-m); line-height:1.95; font-weight:300; font-style:italic; margin-bottom:18px; }
+    .tcard-author { font-size:12px; color:var(--cocoa); font-weight:500; letter-spacing:.06em; }
+    .tcard-tag { font-size:11px; color:rgba(160,120,120,0.55); margin-top:3px; }
+
+    /* ── LOCATION ── */
+    .loc-section { padding:var(--pad-v) var(--pad-h); }
+    .loc-inner { max-width:720px; margin:0 auto; }
+    .loc-card { background:var(--white); border:0.5px solid rgba(196,160,160,0.25); border-radius:20px; overflow:hidden; }
+    .loc-map { height:clamp(160px,28vw,220px); }
+    .loc-map iframe { width:100%; height:100%; border:0; display:block; filter:saturate(0.5) sepia(0.15); }
+    .loc-rows { padding:clamp(18px,3vw,26px); display:flex; flex-direction:column; }
+    .loc-row { display:flex; gap:14px; padding:13px 0; border-bottom:0.5px solid rgba(196,160,160,0.12); align-items:flex-start; }
+    .loc-row:last-child { border-bottom:none; }
+    .loc-icon { font-size:16px; width:22px; text-align:center; flex-shrink:0; margin-top:2px; }
+    .loc-lbl { font-size:11px; font-weight:500; letter-spacing:.08em; color:var(--cocoa); margin-bottom:3px; }
+    .loc-val { font-size:13px; color:var(--cocoa-m); line-height:1.8; font-weight:300; }
+    .loc-mapbtn { display:inline-block; margin-top:5px; font-size:11px; color:var(--rose); border:0.5px solid rgba(196,160,160,0.5); padding:2px 10px; border-radius:20px; transition:background .2s; }
+    .loc-mapbtn:hover { background:var(--rose-pale); }
+    .loc-warn { font-size:11px; color:#b05040; margin-top:4px; }
+
+    /* ── NOTES ── */
+    .notes-section { padding:var(--pad-v) var(--pad-h); background:var(--petal); }
+    .notes-inner { max-width:760px; margin:0 auto; }
+    .notes-grid { display:grid; grid-template-columns:1fr 1fr; gap:clamp(10px,2vw,16px); margin-top:clamp(28px,4vw,48px); }
+    @media(max-width:520px){ .notes-grid { grid-template-columns:1fr; } }
+    .ncard { background:var(--white); border:0.5px solid rgba(196,160,160,0.2); border-radius:14px; padding:clamp(16px,2.5vw,22px); display:flex; gap:12px; }
+    .nc-icon { font-size:18px; flex-shrink:0; margin-top:1px; }
+    .nc-title { font-size:13px; font-weight:500; color:var(--cocoa); margin-bottom:4px; }
+    .nc-body { font-size:12px; color:var(--cocoa-m); line-height:1.8; font-weight:300; }
+
+    /* ── BOOKING ── */
+    .booking-section {
+      padding:var(--pad-v) var(--pad-h);
+      background: var(--cocoa);
+      position:relative; overflow:hidden; text-align:center;
+    }
+    .booking-section::before {
+      content:''; position:absolute;
+      width:clamp(400px,70vw,800px); height:clamp(400px,70vw,800px);
+      border-radius:50%; border:0.5px solid rgba(196,160,160,0.08);
+      top:50%; left:50%; transform:translate(-50%,-50%);
+    }
+    .booking-section::after {
+      content:''; position:absolute;
+      width:clamp(240px,42vw,480px); height:clamp(240px,42vw,480px);
+      border-radius:50%; border:0.5px solid rgba(196,160,160,0.12);
+      top:50%; left:50%; transform:translate(-50%,-50%);
+    }
+    .booking-inner { position:relative; z-index:2; max-width:640px; margin:0 auto; }
+    .booking-eyebrow { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:12px; letter-spacing:.24em; color:var(--rose); display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:1rem; }
+    .booking-eyebrow::before,.booking-eyebrow::after { content:''; display:block; width:28px; height:0.5px; background:var(--rose); }
+    .booking-title { font-family:'Noto Serif TC',serif; font-size:clamp(22px,4vw,38px); font-weight:300; letter-spacing:.08em; color:var(--white); margin-bottom:.8rem; }
+    .booking-sub { font-size:13px; color:rgba(255,255,255,0.4); line-height:1.9; margin-bottom:2.4rem; }
+    .bopts { display:flex; flex-direction:column; gap:8px; margin-bottom:2rem; }
+    .bopt {
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      padding:clamp(12px,2vw,16px) clamp(16px,2.5vw,24px);
+      border:0.5px solid rgba(196,160,160,0.2); border-radius:12px;
+      background:rgba(255,255,255,0.03); transition:all .35s;
+    }
+    .bopt:hover { border-color:rgba(196,160,160,0.55); background:rgba(196,160,160,0.07); transform:translateY(-2px); }
+    .bopt.combo-opt { border-color:rgba(196,160,160,0.35); background:rgba(196,160,160,0.05); }
+    .bopt.home-opt { border-color:rgba(232,201,184,0.3); background:rgba(232,201,184,0.04); }
+    .bopt.home-opt:hover { border-color:rgba(232,201,184,0.6); }
+    .bopt-name { font-family:'Noto Serif TC',serif; font-size:clamp(12px,1.7vw,14px); color:rgba(255,255,255,0.8); text-align:left; letter-spacing:.04em; line-height:1.5; }
+    .bopt-price { font-family:'Cormorant Garamond',serif; font-size:clamp(16px,2.4vw,20px); color:var(--rose); white-space:nowrap; flex-shrink:0; }
+    .bopt.home-opt .bopt-price { color:var(--apricot); }
+    .orig-s { font-size:10px; color:rgba(255,255,255,0.2); text-decoration:line-through; margin-right:4px; font-family:'Noto Sans TC',sans-serif; }
+    .bopt-div { display:flex; align-items:center; gap:12px; padding:6px 0; }
+    .bopt-div-line { flex:1; height:0.5px; background:rgba(196,160,160,0.15); }
+    .bopt-div-text { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:10px; letter-spacing:.18em; color:rgba(196,160,160,0.5); white-space:nowrap; }
+
+    .contact-panel {
+      background:rgba(255,255,255,0.04); border:0.5px solid rgba(196,160,160,0.18);
+      border-radius:16px; padding:clamp(18px,3vw,26px) clamp(18px,3vw,28px);
+      text-align:left; display:flex; flex-direction:column; gap:0;
+    }
+    .cp-row { display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:0.5px solid rgba(255,255,255,0.05); font-size:clamp(12px,1.6vw,13px); color:rgba(255,255,255,0.6); line-height:1.7; }
+    .cp-row:last-child { border-bottom:none; }
+    .cp-row .icon { font-size:15px; width:20px; text-align:center; flex-shrink:0; margin-top:2px; }
+    .cp-row a { color:var(--rose); }
+    .cp-row strong { color:rgba(255,255,255,0.8); }
+    .line-btn-f {
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      background:#06c755; color:#fff;
+      padding:14px 24px; border-radius:40px;
+      font-size:14px; font-weight:500;
+      transition:opacity .3s; margin-top:18px; width:100%;
+    }
+    .line-btn-f:hover { opacity:.88; }
+
+    /* ── IG ── */
+    .ig-section { padding:var(--pad-v) var(--pad-h); text-align:center; }
+    .ig-inner { max-width:520px; margin:0 auto; }
+    .ig-coupon {
+      background:linear-gradient(135deg,#fff8f5,#fdf4f0);
+      border:0.5px solid rgba(196,160,160,0.35); border-radius:20px;
+      padding:clamp(20px,3vw,28px); margin-top:2rem; position:relative; overflow:hidden;
+    }
+    .ig-coupon::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
+    .ig-embed-wrap { max-width:400px; margin:0 auto; border-radius:16px; overflow:hidden; box-shadow:0 8px 32px rgba(61,46,46,0.1); margin-top:2rem; }
+    .ig-follow {
+      display:inline-flex; align-items:center; gap:8px; margin-top:20px;
+      background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+      color:#fff; padding:12px 28px; border-radius:40px; font-size:14px; font-weight:500;
+      transition:opacity .3s, transform .3s;
+    }
+    .ig-follow:hover { opacity:.88; transform:translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--cocoa); padding: clamp(28px,5vw,44px) var(--pad-h);
+      text-align:center;
+    }
+    .foot-brand { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(16px,2.5vw,20px); font-weight:300; color:var(--rose); letter-spacing:.16em; margin-bottom:14px; }
+    .foot-links { display:flex; justify-content:center; gap:clamp(14px,3vw,28px); margin-bottom:14px; flex-wrap:wrap; }
+    .foot-links a { font-size:11px; color:rgba(255,255,255,0.3); transition:color .3s; letter-spacing:.06em; }
+    .foot-links a:hover { color:var(--rose); }
+    .foot-copy { font-size:10px; color:rgba(255,255,255,0.15); letter-spacing:.06em; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">心音園丁 · Singing Bowl</a>
+  <div class="nav-r">
+    <a href="#about" class="nav-link hide-sm">關於頌缽</a>
+    <a href="#services" class="nav-link hide-sm">療癒項目</a>
+    <a href="#location" class="nav-link hide-sm">地址</a>
+    <a href="https://www.instagram.com/p/DU_DWkciMPZ/" target="_blank" rel="noopener" class="nav-link">📷</a>
+    <a href="https://line.me/ti/p/@187gatwr" target="_blank" rel="noopener" class="nav-cta">LINE 預約</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-circle hc1"></div>
+    <div class="hero-circle hc2"></div>
+    <div class="hero-circle hc3"></div>
+  </div>
+
+  <!-- floating date -->
+  <div class="hero-date">
+    <div class="hd-label">SUMMER SPECIAL</div>
+    <div class="hd-date">9 / 9</div>
+    <div class="hd-until">即日起 · 限時至</div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-kana">Sound Healing · Home Visit · Chakra Reset</div>
+    <h1>讓自己<br>被好好<br><em>對待</em></h1>
+    <p class="hero-sub">心音園丁，以頌缽的純淨振動陪伴妳<br>深層清理、靜心歸零，找回屬於妳的光彩。</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-fill">探索療癒項目 →</a>
+      <a href="#booking" class="btn-line">立即預約</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider" style="padding-top:clamp(40px,6vw,60px);padding-bottom:clamp(40px,6vw,60px);">
+  <div class="divider-line"></div>
+  <div class="divider-text">Singing Bowl · Sound &amp; Wave Healing</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- INTRO -->
+<section id="about" style="padding-bottom:var(--pad-v);">
+  <div class="intro-band">
+    <div class="intro-visual">
+      <div class="iv-ring"></div><div class="iv-ring"></div><div class="iv-ring"></div>
+      <img src="assets/images/bowl_icon.png" class="iv-bowl" alt="頌缽">
+    </div>
+    <div>
+      <div class="eyebrow">What is Singing Bowl</div>
+      <h2 class="sec-title">源自喜馬拉雅山<br>2500 年的療癒智慧</h2>
+      <p class="sec-sub">頌缽起源於西藏與尼泊爾，透過金屬缽的泛音與人體生物電磁場共振，深層清理七大脈輪、釋放緊張，讓生命能量重新自由流動。</p>
+      <div class="intro-facts">
+        <div class="fact"><div class="fact-n">2500+</div><div class="fact-l">年歷史傳承</div></div>
+        <div class="fact"><div class="fact-n">432Hz</div><div class="fact-l">自然療癒頻率</div></div>
+        <div class="fact"><div class="fact-n">7</div><div class="fact-l">脈輪全方位清理</div></div>
+        <div class="fact"><div class="fact-n">∞</div><div class="fact-l">深層振動共鳴</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO BAND -->
+<div style="width:100%;overflow:hidden;line-height:0;position:relative;">
+  <img src="assets/images/bowl 1029X523.jpg" alt="心音園丁" style="width:100%;height:clamp(180px,38vw,420px);object-fit:cover;object-position:center 40%;filter:brightness(0.94) saturate(0.85);">
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(249,245,242,0.15),transparent 35%,transparent 65%,rgba(249,245,242,0.2));pointer-events:none;"></div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="services-head">
+    <div class="eyebrow">Summer Healing 暑夏特別企畫</div>
+    <div class="summer-pill">
+      <span class="sp-dot"></span>
+      活動期間 <strong>即日起 至 9/9</strong>
+      <span class="sp-dot"></span>
+    </div>
+    <h2 class="sec-title">妳值得一個<br>完整的療癒時光</h2>
+    <p class="sec-sub">工作室三款精選療程 ＋ 全新到府深度服務，從臉部到全身，從工作室到家中，讓療癒真正融入妳的生活。</p>
+  </div>
+
+  <div class="cards-wrap">
+    <div class="cards-grid">
+
+      <!-- A -->
+      <div class="scard">
+        <div class="scard-tag">A · 工作室</div>
+        <img src="assets/images/bowl_icon.png" style="width:clamp(36px,5vw,48px);margin-bottom:14px;filter:drop-shadow(0 4px 12px rgba(196,160,160,0.35));" alt="">
+        <div class="scard-name">顏來如此</div>
+        <span class="scard-en">Beauty · Facial Sound Lifting</span>
+        <p class="scard-desc">頌缽音頻作用臉部穴位，喚醒肌膚光采，緊緻拉提，由內而外自然綻放。</p>
+        <ul class="scard-items">
+          <li>臉部音波振動導引</li>
+          <li>穴位能量活化</li>
+          <li>肌膚深層放鬆</li>
+        </ul>
+        <div class="scard-duration">⏱ 20 分鐘</div>
+        <div class="addons-wrap">
+          <div class="addon-tag">醫美面膜加購 <span class="at-price">+$99</span> <span style="opacity:.5;font-size:9px;">（市售原價$200）</span></div>
+        </div>
+        <div class="scard-price">
+          <span class="price-sym">NT$</span>
+          <span class="price-n">399</span>
+        </div>
+        <a href="https://line.me/ti/p/@187gatwr" target="_blank" rel="noopener" class="scard-btn">LINE 預約</a>
+      </div>
+
+      <!-- B -->
+      <div class="scard featured">
+        <div class="scard-tag">B · 工作室</div>
+        <img src="assets/images/bowl_icon.png" style="width:clamp(36px,5vw,48px);margin-bottom:14px;filter:drop-shadow(0 4px 12px rgba(232,201,184,0.4));" alt="">
+        <div class="scard-name">小清理</div>
+        <span class="scard-en">Chakra · Sound &amp; Bowl Therapy</span>
+        <p class="scard-desc">音療結合缽療，脈輪頻率共振清理，讓能量阻塞鬆開，重拾身心輕盈。</p>
+        <ul class="scard-items">
+          <li>七脈輪音療調頻</li>
+          <li>缽療深層振動</li>
+          <li>全身能量場清理</li>
+          <li>療程後能量解說</li>
+        </ul>
+        <div class="scard-duration">⏱ 40 分鐘</div>
+        <div class="addons-wrap">
+          <div class="addon-tag">醫美面膜加購 <span class="at-price">+$99</span></div>
+        </div>
+        <div class="scard-price">
+          <span class="price-sym">NT$</span>
+          <span class="price-n">1,299</span>
+        </div>
+        <a href="https://line.me/ti/p/@187gatwr" target="_blank" rel="noopener" class="scard-btn">LINE 預約</a>
+      </div>
+
+      <!-- C -->
+      <div class="scard" style="border-color:rgba(196,160,160,0.45);">
+        <div class="scard-tag">C · 工作室 · 最超值</div>
+        <img src="assets/images/bowl_icon.png" style="width:clamp(36px,5vw,48px);margin-bottom:14px;filter:drop-shadow(0 4px 12px rgba(196,160,160,0.35));" alt="">
+        <div class="scard-name">大清理</div>
+        <span class="scard-en">Deep · Full Body Chakra Reset</span>
+        <p class="scard-desc">完整全身深層頌缽療癒，讓積累的壓力徹底釋放，找回內在最深層的平靜。</p>
+        <ul class="scard-items">
+          <li>全身脈輪深層掃描</li>
+          <li>音療＋缽療雙效</li>
+          <li>多缽共鳴能量浴</li>
+          <li>深度冥想引導</li>
+          <li>個人化能量諮詢</li>
+        </ul>
+        <div class="scard-duration">⏱ 90 分鐘</div>
+        <div class="addons-wrap">
+          <div class="addon-tag">醫美面膜加購 <span class="at-price">+$99</span></div>
+        </div>
+        <div class="scard-price">
+          <span class="price-sym">NT$</span>
+          <span class="price-n" style="color:var(--rose-d);">1,999</span>
+        </div>
+        <a href="https://line.me/ti/p/@187gatwr" target="_blank" rel="noopener" class="scard-btn">LINE 預約</a>
+      </div>
+
+      <!-- D 到府 -->
+      <div class="scard home">
+        <div class="new-wrap"><span>到府 NEW</span></div>
+        <div class="scard-tag">D · 到府專案</div>
+        <img src="assets/images/bowl_icon.png" style="width:clamp(36px,5vw,48px);margin-bottom:14px;filter:drop-shadow(0 4px 12px rgba(196,160,160,0.4));" alt="">
+        <div class="scard-name">深度頌缽療癒</div>
+        <span class="scard-en">Home Visit · Sound &amp; Wave Healing</span>
+        <p class="scard-desc">療癒師親赴妳最放鬆的居家空間，音療結合缽療，不出門即享深度身心整合。</p>
+        <ul class="scard-items">
+          <li>全身脈輪音療＋缽療</li>
+          <li>深度振動全身能量浴</li>
+          <li>個人化能量諮詢</li>
+          <li>到府服務（台中區為主）</li>
+        </ul>
+        <div class="scard-duration">⏱ 90 分鐘</div>
+        <div style="font-size:10px;color:rgba(160,120,120,0.6);margin-bottom:8px;">📍 其他地區請先來訊洽詢</div>
+        <div class="addons-wrap">
+          <div class="addon-tag">加購音波拉提 <span class="at-price">+$499</span></div>
+          <div class="addon-tag">醫美面膜獨家優惠 <span class="at-price">+$99</span></div>
+        </div>
+        <div class="scard-price">
+          <span class="price-sym" style="color:var(--rose-d);">NT$</span>
+          <span class="price-n" style="color:var(--rose-d);">2,800</span>
+        </div>
+        <div style="font-size:10px;color:rgba(160,120,120,0.55);margin-bottom:14px;">含到府服務費</div>
+        <a href="https://line.me/ti/p/@187gatwr" target="_blank" rel="noopener" class="scard-btn">LINE 預約到府</a>
+      </div>
+
+    </div>
+
+    <!-- Combo -->
+    <div class="combo-block">
+      <div class="combo-head">
+        <div class="combo-head-text">— 超值組合方案 · Combo Package —</div>
+      </div>
+      <div class="combo-grid">
+        <div class="ccombo">
+          <div>
+            <div class="cc-label">A ＋ B 組合</div>
+            <div class="cc-name">顏來如此 ＋ 小清理</div>
+            <div class="cc-desc">美顏音波拉提 20min ＋ 音療缽療清理 40min</div>
+          </div>
+          <div class="cc-price-wrap">
+            <span class="cc-sym">NT$</span>
+            <span class="cc-num">1,499</span>
+            <span class="cc-orig">原價 $1,698</span>
+          </div>
+        </div>
+        <div class="ccombo hi">
+          <div>
+            <div class="cc-label">A ＋ C 組合 · 最推薦</div>
+            <div class="cc-name">顏來如此 ＋ 大清理</div>
+            <div class="cc-desc">美顏音波拉提 20min ＋ 全身深層大清理 90min</div>
+          </div>
+          <div class="cc-price-wrap">
+            <span class="cc-sym" style="color:var(--rose-d);">NT$</span>
+            <span class="cc-num">2,199</span>
+            <span class="cc-orig">原價 $2,398</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section" id="flow">
+  <div class="process-inner">
+    <div class="process-sticky">
+      <div class="eyebrow">Experience Flow</div>
+      <h2 class="sec-title">妳的<br>療癒旅程</h2>
+      <p class="sec-sub" style="margin-top:.6rem;">從踏入空間的那一刻，每個步驟都為妳精心設計。</p>
+    </div>
+    <div class="process-steps">
+      <div class="pstep"><div class="ps-num">01</div><div><div class="ps-title">迎賓諮詢</div><div class="ps-desc">療癒師輕鬆交流，了解妳的身心狀態與壓力來源，量身規劃最適合的體驗方式。</div></div></div>
+      <div class="pstep"><div class="ps-num">02</div><div><div class="ps-title">空間沉澱</div><div class="ps-desc">香氛與輕柔音樂相伴，讓妳從日常紛擾中緩緩抽離，進入接受與放鬆的狀態。</div></div></div>
+      <div class="pstep"><div class="ps-num">03</div><div><div class="ps-title">頌缽療癒</div><div class="ps-desc">療癒師以頌缽繞行全身，對應脈輪進行音療與缽療，振動穿透細胞，釋放深層阻塞。</div></div></div>
+      <div class="pstep"><div class="ps-num">04</div><div><div class="ps-title">靜默整合</div><div class="ps-desc">在靜謐中讓能量充分沉澱整合，療癒師輕聲引導妳慢慢回到當下意識。</div></div></div>
+      <div class="pstep"><div class="ps-num">05</div><div><div class="ps-title">能量回饋</div><div class="ps-desc">分享感受，解說能量變化，提供個人化日常保養建議，讓療癒效果延伸到生活。</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="test-section">
+  <div class="test-inner">
+    <div class="test-head">
+      <div class="eyebrow">Guest Stories</div>
+      <h2 class="sec-title">她們說的</h2>
+    </div>
+    <div class="test-grid">
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">「音療加缽療同時進行，感覺整個細胞都在呼吸。肩頸的慢性緊繃在一個療程就明顯舒緩，真的很驚訝頻率的力量這麼強大。」</p>
+        <div class="tcard-author">陳小姐 · 台北</div>
+        <div class="tcard-tag">小清理 音療＋缽療</div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">「顏來如此做完真的有拉提感！頌缽音頻在臉上振動很奇妙，加上醫美面膜氣色也變好了，朋友說我看起來更有精神。」</p>
+        <div class="tcard-author">林女士 · 台中</div>
+        <div class="tcard-tag">顏來如此＋面膜加購</div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">「預約到府服務真的太方便了，在家做完深度清理，整個人脫胎換骨。那種深度放鬆是很久沒有體驗過的感覺，超值！」</p>
+        <div class="tcard-author">王小姐 · 台中</div>
+        <div class="tcard-tag">到府深度頌缽療癒</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IG -->
+<section class="ig-section">
+  <div class="ig-inner">
+    <div class="eyebrow" style="justify-content:center;">Follow Us</div>
+    <h2 class="sec-title" style="text-align:center;">心音園丁 Instagram</h2>
+    <p class="sec-sub" style="text-align:center;margin:0 auto;">追蹤我們，看見每一次療癒的美好瞬間。</p>
+    <div class="ig-coupon">
+      <div style="font-size:24px;margin-bottom:10px;">📷</div>
+      <div style="font-family:'Noto Serif TC',serif;font-size:clamp(14px,2vw,16px);color:var(--cocoa);margin-bottom:8px;letter-spacing:.06em;">按讚 ＋ 追蹤心音園丁 IG</div>
+      <div style="font-size:13px;color:var(--cocoa-m);line-height:1.9;margin-bottom:16px;">
+        即可獲得 <strong style="color:var(--rose-d);font-size:clamp(17px,3vw,21px);">$100</strong> 優惠碼<br>
+        <span style="font-size:11px;color:rgba(107,82,82,0.5);">限定下次使用 · 消費滿 NT$1,500 可折抵</span>
+      </div>
+      <a href="https://www.instagram.com/p/DU_DWkciMPZ/" target="_blank" rel="noopener"
+        style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;padding:10px 24px;border-radius:40px;font-size:14px;font-weight:500;text-decoration:none;">
+        立即前往追蹤 →
+      </a>
+      <div style="font-size:11px;color:rgba(107,82,82,0.4);margin-top:12px;">追蹤後截圖傳送至 LINE@ 即可獲得優惠碼</div>
+    </div>
+    <div class="ig-embed-wrap">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DU_DWkciMPZ/" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:1px;max-width:540px;min-width:326px;padding:0;width:calc(100% - 2px);"></blockquote>
+      <script async src="//www.instagram.com/embed.js"></script>
+    </div>
+    <a href="https://www.instagram.com/p/DU_DWkciMPZ/" target="_blank" rel="noopener" class="ig-follow">📷 前往 Instagram 查看更多</a>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="loc-section" id="location">
+  <div class="loc-inner">
+    <div class="eyebrow">Studio Location</div>
+    <h2 class="sec-title">工作室地址</h2>
+    <p class="sec-sub" style="margin-bottom:1.6rem;">採<strong>預約制</strong>，請先透過 LINE 預約後再前往。</p>
+    <div class="loc-card">
+      <div class="loc-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d458.8!2d120.573!3d24.264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346916b745555555%3A0x0!2z5Y-w5Lit5biC5riF5rC05Y2A5Y2w5rGJ5YyW5LqkMTjomKQ!5e0!3m2!1szh-TW!2stw!4v1"
+          width="100%" height="100%" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="loc-rows">
+        <div class="loc-row"><span class="loc-icon">📍</span><div><div class="loc-lbl">工作室地址</div><div class="loc-val">台中市清水區華江北街20巷15號<br><span style="font-size:11px;color:rgba(107,82,82,0.5);">（皇家城堡社區內，進門左轉，右邊第三間，窗戶有綠色格子）</span></div></div></div>
+        <div class="loc-row"><span class="loc-icon">🗺️</span><div><div class="loc-lbl">導航請輸入</div><div class="loc-val"><strong style="color:var(--rose-d);">華江北街18號</strong><a href="https://maps.google.com/?q=台中市清水區華江北街18號" target="_blank" rel="noopener" class="loc-mapbtn">開啟地圖 →</a></div></div></div>
+        <div class="loc-row"><span class="loc-icon">🚗</span><div><div class="loc-lbl">停車說明</div><div class="loc-val">車子請停在社區外道路旁<div class="loc-warn">⚠️ 請勿擋住鄰居門口，感謝配合</div></div></div></div>
+        <div class="loc-row"><span class="loc-icon">🏠</span><div><div class="loc-lbl">到府服務範圍</div><div class="loc-val">台中區為主；其他地區請先來訊洽詢</div></div></div>
+        <div class="loc-row"><span class="loc-icon">📅</span><div><div class="loc-lbl">預約制</div><div class="loc-val">請先透過 LINE@ 預約時段後再前往</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTES -->
+<section class="notes-section">
+  <div class="notes-inner">
+    <div class="eyebrow">Important Notes</div>
+    <h2 class="sec-title">體驗須知</h2>
+    <div class="notes-grid">
+      <div class="ncard"><span class="nc-icon">🕐</span><div><div class="nc-title">請提早到達</div><div class="nc-body">請於預約時間前 10 分鐘到達，讓身心有時間從外部環境轉換，以獲得最佳療癒效果。</div></div></div>
+      <div class="ncard"><span class="nc-icon">👗</span><div><div class="nc-title">穿著舒適衣物</div><div class="nc-body">建議穿著寬鬆衣物，避免緊身或金屬配件，以利能量流動與振動傳遞。</div></div></div>
+      <div class="ncard"><span class="nc-icon">🍽️</span><div><div class="nc-title">避免飽食後體驗</div><div class="nc-body">建議療程前 1 小時避免大量進食，以半空腹或輕食狀態進行，有助深層放鬆。</div></div></div>
+      <div class="ncard"><span class="nc-icon">🤰</span><div><div class="nc-title">特殊狀況請告知</div><div class="nc-body">懷孕初期、裝有心臟節律器或有特殊疾病者，請事先告知療癒師以調整療程方式。</div></div></div>
+      <div class="ncard"><span class="nc-icon">💧</span><div><div class="nc-title">療程後多補充水分</div><div class="nc-body">頌缽療程加速能量代謝，建議療程後多喝水，幫助排除釋放的負能量。</div></div></div>
+      <div class="ncard"><span class="nc-icon">📵</span><div><div class="nc-title">請勿攜帶電子設備</div><div class="nc-body">進入後請將手機調至靜音或關機，讓自己完全沉浸在當下的療癒空間。</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking-section" id="booking">
+  <div class="booking-inner">
+    <div class="booking-eyebrow">暑夏特別企畫 · 即日起至 9/9</div>
+    <h2 class="booking-title">立即預約<br>妳的療癒時刻</h2>
+    <p class="booking-sub">工作室療程或到府深度服務，透過 LINE 聯繫，為妳安排專屬療癒時光。</p>
+
+    <div class="bopts">
+      <a href="https://line.me/ti/p/@187gatwr" target="_blank" rel="noopener" class="bopt">
+        <span class="bopt-name">🪬 A．顏來如此｜美顏音波拉提（20分鐘）</span>
+        <span class="bopt-price">NT$ 399</span>
+      </a>
+      <a href="https://line.me/ti/p/@187gatwr" target="_blank" rel="noopener" class="bopt">
+        <span class="bopt-name">🎵 B．小清理｜音療＋缽療（40分鐘）</span>
+        <span class="bopt-price">NT$ 1,299</span>
+      </a>
+      <a href="https://line.me/ti/p/@187gatwr" target="_blank" rel="noopener" class="bopt combo-opt">
+        <span class="bopt-name">✨ C．大清理｜全身深層頌缽（90分鐘）</span>
+        <span class="bopt-price">NT$ 1,999</span>
+      </a>
+      <a href="https://line.me/ti/p/@187gatwr" target="_blank" rel="noopener" class="bopt combo-opt">
+        <span class="bopt-name">🪬🎵 A＋B 組合（60分鐘）</span>
+        <span class="bopt-price"><span class="orig-s">1,698</span>NT$ 1,499</span>
+      </a>
+      <a href="https://line.me/ti/p/@187gatwr" target="_blank" rel="noopener" class="bopt combo-opt">
+        <span class="bopt-name">🪬✨ A＋C 組合（110分鐘）</span>
+        <span class="bopt-price"><span class="orig-s">2,398</span>NT$ 2,199</span>
+      </a>
+      <div class="bopt-div"><div class="bopt-div-line"></div><div class="bopt-div-text">到府專案</div><div class="bopt-div-line"></div></div>
+      <a href="https://line.me/ti/p/@187gatwr" target="_blank" rel="noopener" class="bopt home-opt">
+        <span class="bopt-name">🏠 D．深度頌缽療癒｜到府 音療＋缽療（90分鐘）</span>
+        <span class="bopt-price">NT$ 2,800</span>
+      </a>
+      <a href="https://line.me/ti/p/@187gatwr" target="_blank" rel="noopener" class="bopt home-opt">
+        <span class="bopt-name">🏠✨ D＋音波拉提加購｜到府（90分鐘）</span>
+        <span class="bopt-price">NT$ 3,299</span>
+      </a>
+      <div class="bopt-div"><div class="bopt-div-line"></div><div class="bopt-div-text">加購選項（任何療程均適用）</div><div class="bopt-div-line"></div></div>
+      <a href="https://line.me/ti/p/@187gatwr" target="_blank" rel="noopener" class="bopt" style="border-color:rgba(196,160,160,0.15);">
+        <span class="bopt-name" style="color:rgba(255,255,255,0.45);">💆 醫美級面膜加購（市售原價 $200）</span>
+        <span class="bopt-price" style="color:rgba(232,201,184,0.6);font-size:15px;">NT$ 99</span>
+      </a>
+    </div>
+
+    <div class="contact-panel">
+      <div class="cp-row"><span class="icon">📅</span><span><strong>採預約制</strong>，請先 LINE 預約再前往</span></div>
+      <div class="cp-row"><span class="icon">💬</span><span>LINE@：<a href="https://line.me/ti/p/@187gatwr" target="_blank" rel="noopener">@187gatwr</a></span></div>
+      <div class="cp-row"><span class="icon">📷</span><span>Instagram：<a href="https://www.instagram.com/p/DU_DWkciMPZ/" target="_blank" rel="noopener">心音園丁</a></span></div>
+      <div class="cp-row"><span class="icon">📍</span><span>台中市清水區華江北街20巷15號<br><span style="font-size:11px;color:rgba(255,255,255,0.3);">導航輸入：<strong style="color:rgba(196,160,160,0.8);">華江北街18號</strong></span></span></div>
+      <div class="cp-row"><span class="icon">🏠</span><span>到府服務：台中區為主，其他地區請先來訊洽詢</span></div>
+      <div class="cp-row"><span class="icon">🕐</span><span>週二至週日　10:00 — 20:00</span></div>
+      <a href="https://line.me/ti/p/@187gatwr" target="_blank" rel="noopener" class="line-btn-f">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        加入 LINE@ 立即預約
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-brand">心音園丁 · Singing Bowl Healing</div>
+  <div class="foot-links">
+    <a href="https://www.instagram.com/p/DU_DWkciMPZ/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://line.me/ti/p/@187gatwr" target="_blank" rel="noopener">LINE@ @187gatwr</a>
+    <a href="#location">工作室地址</a>
+    <a href="#services">療癒項目</a>
+    <a href="#booking">立即預約</a>
+  </div>
+  <div class="foot-copy">© 2025 心音園丁 Singing Bowl Healing · All Rights Reserved</div>
+</footer>
+
+</body>
+</html>
